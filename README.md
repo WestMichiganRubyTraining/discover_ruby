@@ -29,7 +29,7 @@ a_number   = 1
 some_words = "three blind mice"
 an_array   = [ 1, 2, 3 ] # see "Arrays", below
 ```
-Variables are buckets with labels that carry around whatever you put to the right of
+Variables are labeled buckets that carry around whatever you put to the right of
 the equal sign. You'll see below that when we use the variable name (the "label"),
 we get back whatever we put inside it. *Ask for the bucket, you get what's in it.*
 
