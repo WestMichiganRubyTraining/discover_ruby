@@ -18,8 +18,8 @@ there? The rest of this post gives you things to try out in Ruby, grouped by
 tasks and ideas you might have, like "lists" and "transforming" and the
 difference between a recipe and a meal.
 
-Feel free to try things: you can't break your computer. Exploring is the best
-way to learn. It's also a lot of fun!
+Feel free to try things. It's completely safe: you can't break your computer.
+Exploring is the best way to learn. It's also a lot of fun!
 
 ## Buckets with labels (aka "variables")
 ```
@@ -99,7 +99,7 @@ programming languages do it this way, so we can't complain **too** loud. ;-)
 ## Named Groups (aka [Hashes](http://www.ruby-doc.org/core-2.1.1/Hash.html))
 
 ```
-bob = { "name" => "Big Bob" }
+bob = { "name" => "Big Bob", "address" => "123 Elm St." }
 jane = { "name" => "Lady Jane" }
 bob["name"] # => "Big Bob"
 bob["address"] = "123 Elm St."
@@ -126,7 +126,7 @@ dictionary = {
 phone_book["bob"] # => "616-555-1212"
 ```
 
-## Looping (aka "iteration")
+## Walking a list (aka "iteration")
 ```
 ary = [ 1, 2, 3 ]
 ary.each do |item|
@@ -134,14 +134,14 @@ ary.each do |item|
 end
 ```
 
-It's often handy to do something to each item in an array, so arrays have a
+It's often handy to do something with each item in an array, so arrays have a
 method called `each` to do just that. It walks through the array in order and
 hands you a single item in a variable found between the "pipe" characters.
+(You'll have to hunt for it on your keyboard, but it's there!)
 In this case, the variable is called `item`.
 
-This code will output the three numbers in the array, one to a line. The solutions
-to this task in other languages are uglier than this, so this is a really nice
-feature of Ruby. :-)
+This code will output the three numbers in the array, one to a line. This task
+is much uglier in many other languages, so this is a popular feature in Ruby. :-)
 
 ## Transforming (aka [Mapping](http://ruby-doc.org/core-2.1.1/Enumerable.html#method-i-map), [Selecting](http://ruby-doc.org/core-2.1.1/Enumerable.html#method-i-select), [Reducing](http://ruby-doc.org/core-2.1.1/Enumerable.html#method-i-reduce))
 
@@ -207,7 +207,8 @@ hipster.greet("Jane") # "yo Jane"
 
 You can't eat a recipe, but you can make a meal by following its instructions.
 We put the instructions inside of a `class`, which gets a name (in this case,
-  `Greeter`).
+  `Greeter`). Notice the `end` at the bottom, so Ruby knows where your recipe
+ends!
 
 We tell Ruby to "make a meal" by using the name of the class followed by `new`.
 Anything we hand to `new` (in this case, "howdy" and "yo") get passed along
@@ -223,16 +224,16 @@ and it gets copied into every object, so all the objects we create can call it.
 The other weirdness is that `@greeting = greeting` thing. Why are we assigning
 the contents of greeting to itself? That `@` sign is important: that makes it
 a variable that lives inside the object, invisible to the outside world. However,
-the `greet` method is inside the object, though, so it can see it, as we can see
-from the `puts` line.
+the `greet` method is inside the object, so it can see `@greeting`, as we can see
+on the `puts` line.
 
-## Begin Your Adventure!
+## You've begun your adventure!
 
 There are lots of places you can go with Ruby now that you've gotten some of the
 basics under your belt. May I humbly recommend
 [7 Degrees of FizzBuzz](http://billgathen.com/2013/01/18/7_degrees_of_fizzbuzz.html)?
 You have *almost* all the info you need to do the first few steps of the challenge,
-though you'll want to invest either [Range](http://www.ruby-doc.org/core-2.1.1/Range.html)
+though you'll want to investigate either [Range](http://www.ruby-doc.org/core-2.1.1/Range.html)
 or [.upto](http://ruby-doc.org/core-2.1.1/Integer.html#method-i-upto) to get going.
 
 Exploring and discovering new things on your own will be part of your daily
