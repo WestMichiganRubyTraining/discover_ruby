@@ -93,16 +93,16 @@ ary       # => [ "one", "two", "three", "four" ]
 **Fun Fact:** we get the first item in the list with the number zero because
 arrays need to know *how far from the beginning of the list* your item is.
 The first item is *zero* items away from the beginning of the array. The
-second is *one* element from the beginning. Weird, I know, but virtually all
+second is *one* item from the beginning. Weird, I know, but virtually all
 programming languages do it this way, so we can't complain **too** loud. ;-)
 
 ## Named Groups (aka [Hashes](http://www.ruby-doc.org/core-2.1.1/Hash.html))
 
 ```
-bob = { "name" => "Big Bob", "address" => "123 Elm St." }
+bob = { "name" => "Big Bob" }
 jane = { "name" => "Lady Jane" }
 bob["name"] # => "Big Bob"
-bob["address"] = "123 Elm St."
+bob["address"] = "123 Elm St." # let's add another pair!
 bob.keys # => [ "name", "address" ]
 bob.values # => [ "Big Bob", "123 Elm St." ]
 
@@ -126,6 +126,9 @@ dictionary = {
 phone_book["bob"] # => "616-555-1212"
 ```
 
+They get *really* powerful when you start putting them inside arrays or
+even inside *other* hashes, but we'll let you explore that yourself. :-)
+
 ## Walking a list (aka "iteration")
 ```
 ary = [ 1, 2, 3 ]
@@ -137,7 +140,7 @@ end
 It's often handy to do something with each item in an array, so arrays have a
 method called `each` to do just that. It walks through the array in order and
 hands you a single item in a variable found between the "pipe" characters.
-(You'll have to hunt for it on your keyboard, but it's there!)
+(You'll have to hunt for the "pipe" key on your keyboard, but it's there!)
 In this case, the variable is called `item`.
 
 This code will output the three numbers in the array, one to a line. This task
@@ -164,6 +167,11 @@ data (typically in an array), and these are the big three tasks: we can change
 each piece of data with a `map`, filter to just the items we're interested in
 with a `select` and/or combine them into a single thing with a `reduce`.
 
+All three of these tools are in a module called
+[Enumerable](http://ruby-doc.org/core-2.1.1/Enumerable.html)
+and there are *many* others. I like to say that 75% of what's cool in Ruby
+is in Enumerable, so check it out for yourself!
+
 ## Jobs (aka "methods")
 ```
 def speak words
@@ -179,7 +187,7 @@ differences each time. To keep from having to write the code again and again,
 we "define" a chunk of code called a "method" using the `def` command followed
 by the name of the method and a list of variables (aka "arguments")
 the methods needs (if there are any) separated by commas. We put `end` after
-the code so Ruby knows where to stop running the code.
+the code so Ruby knows where the method ends. (You probably guessed that)
 
 In our example, we define a method called `speak` that takes one argument
 called `words`. It uses `puts` to output the contents of the `words` argument
@@ -208,23 +216,26 @@ hipster.greet("Jane") # "yo Jane"
 You can't eat a recipe, but you can make a meal by following its instructions.
 We put the instructions inside of a `class`, which gets a name (in this case,
   `Greeter`). Notice the `end` at the bottom, so Ruby knows where your recipe
-ends!
+ends: just like a method!
 
 We tell Ruby to "make a meal" by using the name of the class followed by `new`.
 Anything we hand to `new` (in this case, "howdy" and "yo") get passed along
 to the `initialize` method, which Ruby calls itself when it's done with all the
-other tasks required to make a new object.
+hidden tasks Ruby uses to make a new object.
 
 We put this new object in a bucket with a useful ("intention-revealing") name
 so we can give it orders later on.
 
 But there are **two** methods defined inside `Greeter`! The other one is `greet`
 and it gets copied into every object, so all the objects we create can call it.
+This is true of every method you define within your class: `initialize` is the
+exception. There are other kinds of methods to discover on your own:
+try googling *ruby class method* and see what you find.
 
-The other weirdness is that `@greeting = greeting` thing. Why are we assigning
+One other weird bit is that `@greeting = greeting` thing. Why are we assigning
 the contents of greeting to itself? That `@` sign is important: that makes it
 a variable that lives inside the object, invisible to the outside world. However,
-the `greet` method is inside the object, so it can see `@greeting`, as we can see
+the `greet` method is inside the object, so it can see `@greeting`, as demonstrated
 on the `puts` line.
 
 ## You've begun your adventure!
@@ -235,6 +246,8 @@ basics under your belt. May I humbly recommend
 You have *almost* all the info you need to do the first few steps of the challenge,
 though you'll want to investigate either [Range](http://www.ruby-doc.org/core-2.1.1/Range.html)
 or [.upto](http://ruby-doc.org/core-2.1.1/Integer.html#method-i-upto) to get going.
+There are [many other useful resources](http://billgathen.com/get_started_with_ruby.html)
+on the site as well, so check it out!
 
 Exploring and discovering new things on your own will be part of your daily
 life as a programmer, so embrace it and find the joy in finding things out.
