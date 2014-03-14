@@ -1,6 +1,6 @@
 # Discover Ruby!
 
-If you have Ruby installed on your computer, open a terminal window and type `irb`.
+If you have [Ruby](http://ruby-lang.org) installed on your computer, open a terminal window and type `irb`.
 A special session will start that allows you to type any Ruby code you want and
 see the results immediately!
 
