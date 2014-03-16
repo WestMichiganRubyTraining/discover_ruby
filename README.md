@@ -178,8 +178,14 @@ def speak words
   puts words
 end
 
+def double_it num
+  num * 2
+end
+
 speak("Hello World!") # displays "Hello World!" on the screen
 speak("Ruby is awesome!") # displays "Ruby is awesome!" on the screen
+puts double_it(3) # displays 6 on the screen
+speak(double_it(3)) # also displays 6!
 ```
 
 Sometimes we have certain jobs we want to do again and again, maybe with small
@@ -193,6 +199,13 @@ In our example, we define a method called `speak` that takes one argument
 called `words`. It uses `puts` to output the contents of the `words` argument
 and then ends. Ruby goes back to where you called `speak` and continues
 running the rest of your code.
+
+Methods can return information, too. In fact, they always do, but sometimes we
+ignore the info if it's nothing important. The `double_it` method's job is to
+double the number you give it and give the doubled number back to you.
+
+The last line of the example shows that you can pass the results of one method
+to another method (in this case, the results of `double_it` go to `speak`)
 
 ## Recipes and Meals (aka [Classes](http://www.ruby-doc.org/core-2.1.1/Class.html) and [Objects](http://ruby-doc.com/docs/ProgrammingRuby/html/tut_classes.html#S2))
 
@@ -214,29 +227,30 @@ hipster.greet("Jane") # "yo Jane"
 ```
 
 You can't eat a recipe, but you can make a meal by following its instructions.
-We put the instructions inside of a `class`, which gets a name (in this case,
-  `Greeter`). Notice the `end` at the bottom, so Ruby knows where your recipe
+We call our recipes `classes` and the meals they make `objects`.
+In our example we put the instructions inside of a class named `Greeter`.
+Notice the `end` at the bottom, so Ruby knows where your recipe
 ends: just like a method!
 
 We tell Ruby to "make a meal" by using the name of the class followed by `new`.
 Anything we hand to `new` (in this case, "howdy" and "yo") get passed along
-to the `initialize` method, which Ruby calls itself when it's done with all the
-hidden tasks Ruby uses to make a new object.
+to the `initialize` method, which Ruby calls itself when it's completed all the
+hidden tasks required to make a new object.
 
 We put this new object in a bucket with a useful ("intention-revealing") name
 so we can give it orders later on.
 
 But there are **two** methods defined inside `Greeter`! The other one is `greet`
-and it gets copied into every object, so all the objects we create can call it.
+and it gets copied into every object, so all the objects we create can use it.
 This is true of every method you define within your class: `initialize` is the
 exception. There are other kinds of methods to discover on your own:
 try googling *ruby class method* and see what you find.
 
 One other weird bit is that `@greeting = greeting` thing. Why are we assigning
 the contents of greeting to itself? That `@` sign is important: that makes it
-a variable that lives inside the object, invisible to the outside world. However,
-the `greet` method is inside the object, so it can see `@greeting`, as demonstrated
-on the `puts` line.
+a variable that lives only inside the object, invisible to the outside world. However,
+the `greet` method lives inside the object too, so it can see and use `@greeting`,
+as demonstrated on the `puts` line.
 
 ## You've begun your adventure!
 
