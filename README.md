@@ -23,8 +23,8 @@ Exploring is the best way to learn. It's also a lot of fun!
 
 ## Buckets with labels (aka "variables")
 ```
-his_name   = "Bob"
-her_name   = "Jane"
+his_name   = "Miles"
+her_name   = "Ella"
 a_number   = 1
 some_words = "three blind mice"
 an_array   = [ 1, 2, 3 ] # see "Arrays", below
@@ -38,8 +38,8 @@ we get back whatever we put inside it. *Ask for the bucket, you get what's in it
 puts "Hello World!" # displays "Hello World!" on the screen on its own line
 print "the" # displays "the"
 puts "ater" # displays "theater", because previous print didn't finish with a linebreak
-puts "His name is: #{his_name}" # displays "His name is: Bob"
-puts "#{his_name} is friends with #{her_name}" # displays "Bob is friends with Jane"
+puts "His name is: #{his_name}" # displays "His name is: Miles"
+puts "#{his_name} is friends with #{her_name}" # displays "Miles is friends with Ella"
 ```
 
 In this guide, we show you the result of the code snippets by magic, but to see
@@ -48,7 +48,7 @@ anything in your terminal, you need to display it somehow. `puts` (short for
   Try them out and see how they differ. (Hint: maybe on an array?)
 
 The weird ```#{his_name}``` thing is a way to say "put the contents of this
-bucket here in my output", so the output will contain "Bob" or "Jane".
+bucket here in my output", so the output will contain "Miles" or "Ella".
 
 ## Choices (aka [conditionals](http://ruby-doc.com/docs/ProgrammingRuby/html/tut_expressions.html#UH))
 
@@ -103,16 +103,16 @@ Later on we'll be creating our own objects and our own commands.
 ## Named Groups (aka [Hashes](http://www.ruby-doc.org/core-2.1.1/Hash.html))
 
 ```
-bob = { "name" => "Big Bob" }
-jane = { "name" => "Lady Jane" }
-bob["name"] # => "Big Bob"
-bob["address"] = "123 Elm St." # let's add another pair!
-bob.keys # => [ "name", "address" ]
-bob.values # => [ "Big Bob", "123 Elm St." ]
+miles = { "name" => "Miles Davis" }
+ella = { "name" => "Ella Fitzgerald" }
+miles["name"] # => "Miles Davis"
+miles["address"] = "1234 Cool St." # let's add another pair!
+miles.keys # => [ "name", "address" ]
+miles.values # => [ "Miles Davis", "1234 Cool St." ]
 
-friends = [ bob, jane ]
-friends[0]["name"] # => "Big Bob"
-friends.last["name"] # => "Lady Jane"
+friends = [ miles, ella ]
+friends[0]["name"] # => "Miles Davis"
+friends.last["name"] # => "Ella Fitzgerald"
 ```
 
 Hashes are great when we have data we need to look up, like
@@ -122,12 +122,12 @@ can be really handy for making things like phone books or dictionaries, as
 shown below.
 
 ```
-phone_book = { "bob" => "616-555-1212", "jane" => "616-555-1234" }
+phone_book = { "miles" => "616-555-1212", "ella" => "616-555-1234" }
 dictionary = {
   "Ruby" => "Ruby is an awesome programming language",
   "Python" => "Python is an excellent choice, too"
 }
-phone_book["bob"] # => "616-555-1212"
+phone_book["miles"] # => "616-555-1212"
 ```
 
 They get *really* powerful when you start putting them inside arrays or
@@ -155,8 +155,8 @@ is much uglier in many other languages, so this is a popular feature in Ruby. :-
 ```
 nums = [ 1, 2, 3 ]
 nums.map{ |num| num * 2 } # => [ 2, 4, 6 ]
-names = [ "bob", "jane" ]
-names.map{ |name| name.upcase } # => [ "BOB", "JANE" ]
+names = [ "miles", "ella" ]
+names.map{ |name| name.upcase } # => [ "MILES", "ELLA" ]
 
 nums.select{ |num| num > 2 } # => [ 3 ]
 nums.select{ |num| num.odd? } # => [ 1, 3 ]
@@ -238,8 +238,8 @@ end
 
 cowboy  = Greeter.new("howdy")
 hipster = Greeter.new("yo")
-cowboy.greet("Bob") # "howdy Bob"
-hipster.greet("Jane") # "yo Jane"
+cowboy.greet("Miles") # "howdy Miles"
+hipster.greet("Ella") # "yo Ella"
 ```
 
 You can't eat a recipe, but you can make a meal by following its instructions.
