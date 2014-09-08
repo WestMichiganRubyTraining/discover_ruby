@@ -74,8 +74,8 @@ continues on as if nothing happened. The `else` clause catches everything, so
 make sure you put it last. ;-)
 
 Note that ```a == 1``` has a *pair* of equal signs. One equal sign means "put
-this in the bucket" but a pair says "compare what's in the bucket to what's on
-the right side".
+this in the bucket" but a pair asks "does what's in the bucket match the thing on
+the right side? Yes or no".
 
 ## Lists (aka [Arrays](http://www.ruby-doc.org/core-2.1.1/Array.html))
 
@@ -95,6 +95,10 @@ arrays need to know *how far from the beginning of the list* your item is.
 The first item is *zero* items away from the beginning of the array. The
 second is *one* item from the beginning. Weird, I know, but virtually all
 programming languages do it this way, so we can't complain **too** loud. ;-)
+
+The ```ary.first``` and ```ary.last``` are **method calls**, which we will see
+more of in a minute. Arrays are objects which respond to certain commands.
+Later on we'll be creating our own objects and our own commands.
 
 ## Named Groups (aka [Hashes](http://www.ruby-doc.org/core-2.1.1/Hash.html))
 
@@ -159,7 +163,7 @@ nums.select{ |num| num.odd? } # => [ 1, 3 ]
 
 nums.reduce{ |sum,num| sum + num } # => 6
 
-nums.map{ |n| n * 2 }.reduce{ |sum,n| sum + n } # => 12
+nums.map{ |num| num * 2 }.reduce{ |sum,num| sum + num } # => 12
 ```
 
 A surprising amount of programming involves "doing something" with a bunch of
@@ -204,8 +208,20 @@ Methods can return information, too. In fact, they always do, but sometimes we
 ignore the info if it's nothing important. The `double_it` method's job is to
 double the number you give it and give the doubled number back to you.
 
+In some languages, you have to return a value explicitly, but Ruby automatically
+returns the value of **the last bit of code it executes**. In the case of ```double_it```
+the last thing was calculating the value of ```num * 2```, so Ruby returns 6!
+
 The last line of the example shows that you can pass the results of one method
-to another method (in this case, the results of `double_it` go to `speak`)
+to another method (in this case, the results of `double_it` go to `speak`). This
+can be a bit hard to read, because Ruby digs down into the deepest set of parentheses
+and executes that first, then pops out to the next level and executes that, etc.
+So to understand the code you read it "inside out".
+
+This is how Ruby executes that last line:
+* ```3``` # => 3
+* ```double_it(3)``` # => 6
+* ```speak(6)``` # displays 6 on screen
 
 ## Recipes and Meals (aka [Classes](http://www.ruby-doc.org/core-2.1.1/Class.html) and [Objects](http://ruby-doc.com/docs/ProgrammingRuby/html/tut_classes.html#S2))
 
@@ -232,10 +248,23 @@ In our example we put the instructions inside of a class named `Greeter`.
 Notice the `end` at the bottom, so Ruby knows where your recipe
 ends: just like a method!
 
-We tell Ruby to "make a meal" by using the name of the class followed by `new`.
+We tell Ruby to "make a meal" by using the name of the class followed by a call
+to the `new` method (which is given to us free by Ruby: we don't need to write it ourselves).
 Anything we hand to `new` (in this case, "howdy" and "yo") get passed along
 to the `initialize` method, which Ruby calls itself when it's completed all the
 hidden tasks required to make a new object.
+
+> ## Why does Ruby need ```new``` **and** ```initialize```?
+>
+> ```new``` is a method Ruby automatically gives to every class, including the
+> ones you define. ```new``` knows how to do all the behind-the-scenes work needed
+> to create an object. The last thing ```new``` does is call the ```initialize```
+> method in your class (if you defined one) and passes along the arguments you gave it
+> (if you supplied any).
+> ```initialize``` is where you put any code that *customizes each individual
+> object*, allowing them to act differently. In our example, we give different
+> greetings to the ```cowboy``` and ```hipster``` objects, allowing them to
+> respond differently to the ```greet``` method.
 
 We put this new object in a bucket with a useful ("intention-revealing") name
 so we can give it orders later on.
